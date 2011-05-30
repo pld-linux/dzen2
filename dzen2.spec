@@ -1,7 +1,7 @@
 Summary:	A general purpose messaging and notification program
 Name:		dzen2
 Version:	0.8.5
-Release:	1
+Release:	0.1
 License:	MIT
 Group:		X11/Applications
 Source0:	%{name}-%{version}.tar.gz
