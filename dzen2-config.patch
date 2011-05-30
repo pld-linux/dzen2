@@ -1,0 +1,46 @@
+--- dzen2-0.8.5/config.mk~	2007-08-18 08:18:50.000000000 +0200
++++ dzen2-0.8.5/config.mk	2011-05-30 09:08:07.921566614 +0200
+@@ -19,8 +19,8 @@
+ # Comment  : Add # to the beginning of the respective lines
+ 
+ # Option 1: No Xinerama no XPM
+-LIBS = -L/usr/lib -lc -L${X11LIB} -lX11
+-CFLAGS = -Os ${INCS} -DVERSION=\"${VERSION}\"
++#LIBS = -L/usr/lib -lc -L${X11LIB} -lX11
++#CFLAGS = -Os ${INCS} -DVERSION=\"${VERSION}\"
+ 
+ # Option 2: No Xinerama with XPM
+ #LIBS = -L/usr/lib -lc -L${X11LIB} -lX11 -lXpm
+@@ -31,13 +31,13 @@
+ #CFLAGS = -Os ${INCS} -DVERSION=\"${VERSION}\" -DDZEN_XINERAMA
+ 
+ # Option 4: With Xinerama and XPM
+-#LIBS = -L/usr/lib -lc -L${X11LIB} -lX11 -lXinerama -lXpm
+-#CFLAGS = -Os ${INCS} -DVERSION=\"${VERSION}\" -DDZEN_XINERAMA -DDZEN_XPM
++LIBS = -L$(LIBDIR) -lc -L${X11LIB} -lX11 -lXinerama -lXpm
++CFLAGS = $(OPTFLAGS) -Os ${INCS} -DVERSION=\"${VERSION}\" -DDZEN_XINERAMA -DDZEN_XPM
+ 
+ # END of feature configuration
+ 
+ 
+-LDFLAGS = ${LIBS}
++LDFLAGS = $(OPTFLAGS) $(PLD_LDFLAGS) ${LIBS}
+ 
+ # Solaris, uncomment for Solaris
+ #CFLAGS = -fast ${INCS} -DVERSION=\"${VERSION}\"
+--- dzen2-0.8.5/gadgets/config.mk~	2007-08-18 08:18:50.000000000 +0200
++++ dzen2-0.8.5/gadgets/config.mk	2011-05-30 09:08:59.415317806 +0200
+@@ -8,10 +8,10 @@
+ INCS = -I. -I/usr/include -I${X11INC}
+ 
+ X11LIB = /usr/X11R6/lib
+-LIBS = -L/usr/lib 
++LIBS = -L$(LIBDIR)
+ 
+-CFLAGS = -Os ${INCS} 
+-LDFLAGS = ${LIBS}
++CFLAGS = $(OPTFLAGS) -Os ${INCS} 
++LDFLAGS = $(OPTFLAGS) $(PLD_LDFLAGS) ${LIBS}
+ 
+ # compiler and linker
+ CC = gcc
