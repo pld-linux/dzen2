@@ -9,7 +9,7 @@ Source0:	%{name}-%{version}.tar.gz
 Patch0:		%{name}-config.patch
 Patch1:		%{name}-verbose.patch
 URL:		https://sites.google.com/site/gotmor/dzen/
-#BuildRequires:	-
+BuildRequires:	xorg-lib-libX11-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
